@@ -14,6 +14,13 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository repository;
 
+    @PostMapping("/api/employees")
+   public Employee addEmployee(@RequestBody Employee employee) {
+       repository.save(employee);
+        return employee;
+   }
+
+
     @GetMapping("/api/employees")
     public List<Employee> getAllEmployees() {
         List<Employee> employeeList = repository.findAll();

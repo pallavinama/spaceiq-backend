@@ -17,7 +17,7 @@ public class Booking {
     @NotNull
     @Temporal(TemporalType.DATE)
     private Date date;
-    private String deskId;
+    private Integer deskId;
     private Integer employeeId;
 
     public Integer getId() {
@@ -36,11 +36,11 @@ public class Booking {
         this.date = date;
     }
 
-    public String getDeskId() {
+    public Integer getDeskId() {
         return deskId;
     }
 
-    public void setDeskId(String deskId) {
+    public void setDeskId(Integer deskId) {
         this.deskId = deskId;
     }
 

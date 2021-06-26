@@ -39,6 +39,17 @@ public class BookingController {
     @PostMapping("/api/bookings")
     @ResponseStatus(HttpStatus.CREATED)
     public Booking addBooking(@RequestBody Booking booking) {
+        Booking existingBooking = repository.findBookingByEmpDeskDate(booking.getEmployeeId(),booking.getDeskId(),booking.getDate());
+        if(existingBooking != null)
+            throw new IllegalArgumentException("A booking already exists for this employee, desk, date combination");
+
+        existingBooking = repository.findBookingByDeskDate(booking.getDeskId(),booking.getDate());
+        if(existingBooking != null)
+            throw new IllegalArgumentException("A booking already exists for this desk, date combination");
+
+        existingBooking = repository.findBookingByEmpDate(booking.getEmployeeId(),booking.getDate());
+        if(existingBooking != null)
+            throw new IllegalArgumentException("A booking already exists for this employee, date combination");
         repository.save(booking);
         return booking;
     }

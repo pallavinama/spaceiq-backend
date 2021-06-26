@@ -24,20 +24,20 @@ public class EmployeeController {
         return employeeRepo.save(employee);
     }
 
-    @GetMapping("/employees")
+    @GetMapping("/employee")
     @ResponseStatus(HttpStatus.OK)
     public List<Employee> getAllEmployees() {
         return employeeRepo.findAll();
     }
 
-    @GetMapping("employee/{id}")
+    @GetMapping("/employee/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Employee getEmployeeById(@PathVariable int id) {
         return employeeRepo.getById(id);
     }
 
 
-    @PutMapping("employee/{id}")
+    @PutMapping("/employee/{id}")
     public void updateEmployee(@RequestBody Employee employeeDetails, @PathVariable int id) {
         if (employeeDetails.getId() == null) {
             employeeDetails.setId(id);
@@ -49,7 +49,7 @@ public class EmployeeController {
         employeeRepo.save(employeeDetails);
     }
 
-    @DeleteMapping(value = "employee/{id}")
+    @DeleteMapping(value = "/employee/{id}")
     public void deleteEmployee(@PathVariable int id) {
         employeeRepo.deleteById(id);
     }

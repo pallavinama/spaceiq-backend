@@ -1,14 +1,17 @@
 package com.spaceiq.spaceiqedgeserviceAPI.controller;
 
 import com.spaceiq.spaceiqedgeserviceAPI.model.Booking;
+import com.spaceiq.spaceiqedgeserviceAPI.model.Desk;
 import com.spaceiq.spaceiqedgeserviceAPI.model.Employee;
 import com.spaceiq.spaceiqedgeserviceAPI.util.BookingClient;
 import com.spaceiq.spaceiqedgeserviceAPI.util.EmployeeClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -17,6 +20,7 @@ import java.util.List;
 public class BookingController {
     @Autowired
     private BookingClient bookingClient;
+
 
     @GetMapping("/bookings")
     @ResponseStatus(HttpStatus.OK)
@@ -50,4 +54,17 @@ public class BookingController {
     }
 
 
-}
+    @GetMapping("/desks")
+    public List<Desk> getAllDesks() {
+//        List<Desk> deskList = BookingClient.getAllDesks();
+        return bookingClient.getAllDesks();
+
+    }
+
+
+    @GetMapping("/availableDesks")
+    public List<Desk> getAvailableDesks(@RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date) {
+        List<Desk> deskList = bookingClient.getAvailableDesks(date);
+        return deskList;
+    }
+    }

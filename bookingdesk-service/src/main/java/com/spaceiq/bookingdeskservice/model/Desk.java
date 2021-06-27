@@ -61,6 +61,15 @@ public class Desk {
                 ", bookings=" + bookings +
                 '}';
     }
+
+    public Desk(Integer id, String code, List<Booking> bookings) {
+        this.id = id;
+        this.code = code;
+        this.bookings = bookings;
+    }
+
+    public Desk() {
+    }
 }
 
 

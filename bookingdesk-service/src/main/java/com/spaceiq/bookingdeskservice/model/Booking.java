@@ -74,4 +74,14 @@ public class Booking {
                 ", employeeId=" + employeeId +
                 '}';
     }
+
+    public Booking(Integer id, Date date, Integer deskId, Integer employeeId) {
+        this.id = id;
+        this.date = date;
+        this.deskId = deskId;
+        this.employeeId = employeeId;
+    }
+
+    public Booking() {
+    }
 }

@@ -122,4 +122,19 @@ public class Employee {
                 ", bookings=" + bookings +
                 '}';
     }
+
+    public Employee(Integer id, String firstName, String lastName, String address, Integer phoneNumber, String email, String password, String authority, List<Booking> bookings) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+        this.authority = authority;
+        this.bookings = bookings;
+    }
+
+    public Employee() {
+    }
 }

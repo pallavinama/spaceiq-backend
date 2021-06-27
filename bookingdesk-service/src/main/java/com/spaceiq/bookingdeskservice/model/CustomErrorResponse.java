@@ -57,4 +57,14 @@ public class CustomErrorResponse {
                 ", timestamp=" + timestamp +
                 '}';
     }
+
+    public CustomErrorResponse(String errorMsg, int status, String errorCode, LocalDateTime timestamp) {
+        this.errorMsg = errorMsg;
+        this.status = status;
+        this.errorCode = errorCode;
+        this.timestamp = timestamp;
+    }
+
+    public CustomErrorResponse() {
+    }
 }

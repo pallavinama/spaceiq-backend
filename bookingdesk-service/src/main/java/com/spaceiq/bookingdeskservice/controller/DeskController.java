@@ -24,6 +24,7 @@ public class DeskController {
     public List<Desk> getAvailableDesks(@RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date) {
         List<Desk> deskList = repository.findAvailableDesks(date);
         return deskList;
+
     }
 
     @PostMapping("/api/desks")

@@ -17,6 +17,36 @@ tags:
   - name: employee-controller
     description: Employee Controller
 paths:
+  /edge/availableDesks:
+    get:
+      tags:
+        - booking-controller
+      summary: getAvailableDesks
+      operationId: getAvailableDesksUsingGET
+      parameters:
+        - name: date
+          in: query
+          description: date
+          required: true
+          style: form
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Desk'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
   /edge/bookings:
     get:
       tags:
@@ -85,6 +115,27 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+  /edge/desks:
+    get:
+      tags:
+        - booking-controller
+      summary: getAllDesks
+      operationId: getAllDesksUsingGET
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Desk'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
   /edge/employee:
     get:
       tags:
@@ -179,6 +230,15 @@ components:
         employeeId:
           type: integer
           format: int32
+        id:
+          type: integer
+          format: int32
+    Desk:
+      title: Desk
+      type: object
+      properties:
+        code:
+          type: string
         id:
           type: integer
           format: int32

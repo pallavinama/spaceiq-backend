@@ -25,5 +25,6 @@ public class EmployeeController {
     public List<Employee> getAllEmployees() {
         List<Employee> employeeList = repository.findAll();
         return employeeList;
+
     }
     }

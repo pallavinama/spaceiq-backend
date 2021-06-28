@@ -1,10 +1,13 @@
 package com.spaceiq.spaceiqedgeserviceAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Booking {
     private Integer id;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date date;
     private Integer deskId;
     private Integer employeeId;
